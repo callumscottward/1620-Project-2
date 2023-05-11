@@ -138,12 +138,11 @@ class Controller(QMainWindow, Ui_MainWindow):
         if self.current_num == 2 and self.num2 is not None:
             try:
                 self.num1 = ops[self.operator](self.num1, self.num2)
+                self.current_num = 1
             except ZeroDivisionError:
                 self.entry.setText('Error')
                 self.ans_displayed = True
                 self.num1 = 0
-
-            self.num2 = None
 
         self.operator = '+'
 
@@ -154,12 +153,11 @@ class Controller(QMainWindow, Ui_MainWindow):
         if self.current_num == 2 and self.num2 is not None:
             try:
                 self.num1 = ops[self.operator](self.num1, self.num2)
+                self.current_num = 1
             except ZeroDivisionError:
                 self.entry.setText('Error')
                 self.ans_displayed = True
                 self.num1 = 0
-
-            self.num2 = None
 
         self.operator = '-'
 
@@ -170,12 +168,11 @@ class Controller(QMainWindow, Ui_MainWindow):
         if self.current_num == 2 and self.num2 is not None:
             try:
                 self.num1 = ops[self.operator](self.num1, self.num2)
+                self.current_num = 1
             except ZeroDivisionError:
                 self.entry.setText('Error')
                 self.ans_displayed = True
                 self.num1 = 0
-
-            self.num2 = None
 
         self.operator = '*'
 
@@ -186,12 +183,11 @@ class Controller(QMainWindow, Ui_MainWindow):
         if self.current_num == 2 and self.num2 is not None:
             try:
                 self.num1 = ops[self.operator](self.num1, self.num2)
+                self.current_num = 1
             except ZeroDivisionError:
                 self.entry.setText('Error')
                 self.ans_displayed = True
                 self.num1 = 0
-
-            self.num2 = None
 
         self.operator = '/'
 
@@ -219,6 +215,8 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.ans_displayed = True
 
     def sine(self):
+        self.reset_operations()
+
         if self.current_num == 1:
             self.num1 = math.sin(self.num1)
 
@@ -230,7 +228,7 @@ class Controller(QMainWindow, Ui_MainWindow):
             else:
                 self.entry.setText(f'{self.num1}'[0:5] + '...')
 
-        elif self.current_num == 2 and self.num2 is not None:
+        elif self.current_num == 2:
             self.num2 = math.sin(self.num2)
 
             if self.num2 % 1 == 0:
@@ -242,6 +240,8 @@ class Controller(QMainWindow, Ui_MainWindow):
                 self.entry.setText(f'{self.num2}'[0:5] + '...')
 
     def cosine(self):
+        self.reset_operations()
+
         if self.current_num == 1:
             self.num1 = math.cos(self.num1)
 
@@ -253,7 +253,7 @@ class Controller(QMainWindow, Ui_MainWindow):
             else:
                 self.entry.setText(f'{self.num1}'[0:5] + '...')
 
-        elif self.current_num == 2 and self.num2 is not None:
+        elif self.current_num == 2:
             self.num2 = math.cos(self.num2)
 
             if self.num2 % 1 == 0:
@@ -265,6 +265,8 @@ class Controller(QMainWindow, Ui_MainWindow):
                 self.entry.setText(f'{self.num2}'[0:5] + '...')
 
     def tangent(self):
+        self.reset_operations()
+
         if self.current_num == 1:
             self.num1 = math.tan(self.num1)
 
@@ -276,7 +278,7 @@ class Controller(QMainWindow, Ui_MainWindow):
             else:
                 self.entry.setText(f'{self.num1}'[0:5] + '...')
 
-        elif self.current_num == 2 and self.num2 is not None:
+        elif self.current_num == 2:
             self.num2 = math.tan(self.num2)
 
             if self.num2 % 1 == 0:
